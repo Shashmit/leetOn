@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import {useState } from 'react';
 import './App.css'
 import logo from "./assests/logo.png";
 import axios from 'axios';
@@ -6,7 +6,23 @@ import Bento from './Bento';
 
 function App() {
   const [username, setUsername] = useState("");
-  const [data, setData] = useState([]);
+  const [data, setData] = useState({
+    realName: '',
+    userAvatar: '',
+    ranking: 0,
+    totalSolved: 0,
+    contributionPoint: 0,
+    attendedContests: 0,
+    globalRanking: 0,
+    rating: 0,
+    topPercentage: 0,
+    easySolved: 0,
+    mediumSolved: 0,
+    hardSolved: 0,
+    totalEasy: 0,
+    totalMedium: 0,
+    totalHard: 0,
+  });
   const [state, setState] = useState(false);
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) =>{
     e.preventDefault();
@@ -14,7 +30,7 @@ function App() {
       if(username === ""){
         throw new Error("Username cannot be empty");
       }
-      const readLeetCode = await axios.post('http://localhost:3000',{
+      const readLeetCode = await axios.post('http://localhost:3000/api',{
         username: username
       });
       const response = readLeetCode.data;
@@ -58,7 +74,7 @@ function App() {
             </form>
         </div>
         {state && state === true? <div className='flex flex-col mt-10 gap-2'>
-          <Bento dataSol={data}/>
+          <Bento dataSol={data } />
         </div> : <div>  
         </div>}  
       </div>
@@ -69,7 +85,6 @@ function App() {
             <span className=''>Connect with me on <a href="https://www.linkedin.com/in/shashmit-kumar-23b75620a/" className="underline">LinkedIn</a></span>
             </div>
         </div>
-
     </div>
   </div> 
   )

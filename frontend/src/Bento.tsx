@@ -1,6 +1,25 @@
 
-const Bento = ({ dataSol }) => {
+interface BentoProps {
+  dataSol: {
+    realName: string;
+    userAvatar: string;
+    ranking: number;
+    totalSolved: number;
+    contributionPoint: number;
+    attendedContests: number;
+    globalRanking: number;
+    rating: number;
+    topPercentage: number;
+    easySolved: number;
+    mediumSolved: number;
+    hardSolved: number;
+    totalEasy: number;
+    totalMedium: number;
+    totalHard: number;
+  };
+}
 
+const Bento: React.FC<BentoProps> = ({ dataSol }) => {
   return (
   <>
     <div> <h2>{dataSol.realName}</h2></div>

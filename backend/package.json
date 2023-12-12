@@ -4,7 +4,8 @@
   "description": "Backend for leeton that outputs the information of the User",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cd ../frontend && npm run build && rm -rf ../backend/public && mkdir -p ../backend/public && mv ./dist/* ../backend/public && cd ../backend && node index.js"
   },
   "author": "shashmit",
   "license": "ISC",
