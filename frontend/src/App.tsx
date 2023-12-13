@@ -30,7 +30,7 @@ function App() {
       if(username === ""){
         throw new Error("Username cannot be empty");
       }
-      const readLeetCode = await axios.post('http://localhost:3000/api',{
+      const readLeetCode = await axios.post('https://leeton.shashmit.in/api',{
         username: username
       });
       const response = readLeetCode.data;
